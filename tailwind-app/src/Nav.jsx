@@ -1,11 +1,19 @@
 import reactLogo from './assets/react.svg';
-// var navigation = [{'title':"Home",'href':"/",'available':true},
-//     {'title':"About",'href':"/About",'available':false},
-//     {'title':"Services",'href':"/Services",'available':false},
-//     {'title':"Pricing",'href':"/Pricing",'available':false},
-//     {'title':"Contact",'href':"/Contact",'available':false}];
+var navigation = [{'title':"Home",'href':"/",'available':true},
+     {'title':"About",'href':"/About",'available':false},
+     {'title':"Services",'href':"/Services",'available':false},
+     {'title':"Pricing",'href':"/Pricing",'available':false},
+     {'title':"Contact",'href':"/Contact",'available':false}];
 function Nav (){
     return (
+
+      /* 
+        En este caso, usamos el método map() para recorrer el arreglo navigation.
+        Por cada elemento 'e' del arreglo, generamos un <li> con un <a> dentro.
+        Si 'e.available' es true, el enlace tendrá clases que lo mostrarán como activo (color azul).
+        Si 'e.available' es false, el enlace tendrá clases que lo mostrarán como inactivo o deshabilitado visualmente.
+        Esto permite que el menú se construya de forma dinámica a partir del arreglo, evitando repetir código por cada enlace.
+      */
 
 <nav className="bg-white border-gray-200 dark:bg-gray-900">
   <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -19,23 +27,14 @@ function Nav (){
         </svg>
     </button>
     <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-      <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-        <li>
-          <a href="#" className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</a>
-        </li>
-        <li>
-          <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
-        </li>
-        <li>
-          <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
-        </li>
-        <li>
-          <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
-        </li>
-        <li>
-          <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-        </li>
-      </ul>
+<ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+  {navigation.map(e=>
+    <li>
+      <a href={e.href} className={e.available?"block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500":"block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"} aria-current="page">{e.title}</a>
+    </li>
+  )}     
+</ul>
+
     </div>
   </div>
 </nav>
